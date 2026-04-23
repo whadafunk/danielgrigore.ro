@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,6 +10,20 @@ html {
 
 body {
   @apply bg-bg-primary text-text-primary font-sans;
+  position: relative;
+}
+
+/* Subtle background grid pattern */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(61, 130, 245, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 130, 245, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
 }
 
 a {
@@ -18,4 +32,62 @@ a {
 
 code {
   @apply bg-bg-surface px-2 py-0.5 rounded text-sm font-mono text-text-primary;
+}
+
+/* Section spacing improvements */
+section {
+  @apply relative;
+}
+
+section h2 {
+  @apply text-4xl font-bold mb-12 text-text-primary;
+  letter-spacing: -0.02em;
+}
+
+/* Decorative accent line above section titles */
+section h2::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, transparent);
+  margin-bottom: 1rem;
+  border-radius: 2px;
+}
+
+/* Better button styling */
+.px-8.py-3 {
+  @apply rounded-lg font-semibold transition-all duration-200;
+}
+
+/* Improved link styling for subtle visual interest */
+a[href*="#work"],
+a[href="/work"],
+a[href="/blog"],
+a[href="/contact"] {
+  position: relative;
+  display: inline-block;
+}
+
+/* Subtle divider enhancement */
+.border-t {
+  border-color: rgba(42, 42, 42, 0.5);
+}
+
+/* Improved card hover effects */
+.hover\:shadow-lg:hover {
+  @apply shadow-xl transition-all duration-300;
+}
+
+/* Better typography for readability */
+p {
+  @apply leading-7;
+}
+
+h1 {
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  letter-spacing: -0.02em;
 }

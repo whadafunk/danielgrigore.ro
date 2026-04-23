@@ -1,0 +1,17 @@
+#!/bin/bash
+DOCKER_NAME=phpine-www
+docker container run \
+	--name ${DOCKER_NAME} \
+	--hostname ${DOCKER_NAME} \
+	--detach \
+	--rm \
+	--env TZ="Europe/Bucharest" \
+	--mount type=bind,source=$(pwd)/dist,destination=/var/www/localhost/htdocs/ \
+	--mount type=bind,source=$(pwd)/log,destination=/var/www/logs/ \
+	--mount type=bind,source=$(pwd)/httpd.conf,destination=/etc/apache2/httpd.conf \
+	--interactive \
+	--tty \
+	--publish 81:80 \
+	routerology/phpine:latest
+
+

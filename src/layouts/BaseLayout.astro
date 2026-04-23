@@ -19,15 +19,24 @@ const { title, description = 'Infrastructure Consultant. I know how it works.' }
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <nav class="sticky top-0 bg-bg-primary/95 backdrop-blur border-b border-bg-border">
-      <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="font-semibold text-text-primary hover:text-accent transition-colors">
-          Daniel Grigore
+    <nav class="sticky top-0 bg-bg-primary/95 backdrop-blur border-b border-bg-border z-50">
+      <div class="max-w-4xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="/" class="font-bold text-text-primary hover:text-accent transition-colors text-lg">
+          DG
         </a>
-        <div class="flex gap-6 text-sm">
-          <a href="/#work" class="text-text-secondary hover:text-text-primary transition-colors">Work</a>
-          <a href="/blog" class="text-text-secondary hover:text-text-primary transition-colors">Blog</a>
-          <a href="/contact" class="text-text-secondary hover:text-text-primary transition-colors">Contact</a>
+        <div class="flex gap-8 text-sm">
+          <a href="/#work" class="text-text-secondary hover:text-accent transition-colors relative group">
+            Work
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="/blog" class="text-text-secondary hover:text-accent transition-colors relative group">
+            Blog
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="/contact" class="text-text-secondary hover:text-accent transition-colors relative group">
+            Contact
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+          </a>
         </div>
       </div>
     </nav>
@@ -36,9 +45,14 @@ const { title, description = 'Infrastructure Consultant. I know how it works.' }
       <slot />
     </main>
 
-    <footer class="bg-bg-surface border-t border-bg-border mt-16">
-      <div class="max-w-4xl mx-auto px-6 py-8 text-center text-text-secondary text-sm">
-        <p>© 2024 Daniel Grigore. Based in Bucharest, Romania. Remote.</p>
+    <footer class="bg-bg-surface border-t border-bg-border mt-24 relative">
+      <!-- Decorative accent line -->
+      <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent opacity-20"></div>
+      <div class="max-w-4xl mx-auto px-6 py-12 text-center">
+        <p class="text-text-secondary text-sm mb-2">© 2024 Daniel Grigore</p>
+        <p class="text-text-secondary text-xs">
+          Based in Bucharest, Romania • Remote • <a href="https://linkedin.com/in/grigoreDaniel/" class="hover:text-accent transition-colors">LinkedIn</a>
+        </p>
       </div>
     </footer>
   </body>
