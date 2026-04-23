@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts: any[] = [];
+---
+
+<BaseLayout title="Blog" description="Articles about infrastructure, open-source, and pragmatic solutions">
+  <section class="max-w-4xl mx-auto px-6 py-24">
+    <h1 class="text-4xl font-semibold mb-12 text-text-primary">Blog</h1>
+
+    {posts.length === 0 ? (
+      <div class="bg-bg-surface border border-bg-border rounded-lg p-8 text-center">
+        <p class="text-text-secondary mb-4">Coming soon — writing about infrastructure, open-source solutions, and pragmatic approaches.</p>
+        <p class="text-sm text-text-secondary">
+          Subscribe to my <a href="https://linkedin.com/in/grigoreDaniel/" target="_blank" class="text-accent">LinkedIn</a> for updates.
+        </p>
+      </div>
+    ) : (
+      <div class="space-y-6">
+        {posts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="group block">
+            <div class="border-b border-bg-border pb-6 group-hover:border-accent/50 transition-colors">
+              <h2 class="text-2xl font-semibold mb-2 text-text-primary group-hover:text-accent transition-colors">
+                {post.title}
+              </h2>
+              <p class="text-text-secondary mb-3">{post.description}</p>
+              <p class="text-sm text-text-secondary">
+                {post.pubDate?.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>

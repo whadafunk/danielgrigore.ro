@@ -1,0 +1,60 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  pubDate?: Date;
+}
+
+const { title, description, pubDate } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-3xl mx-auto px-6 py-16">
+    <div class="mb-12">
+      <h1 class="text-4xl font-semibold mb-4 text-text-primary">{title}</h1>
+      {pubDate && (
+        <p class="text-text-secondary">
+          {pubDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </p>
+      )}
+    </div>
+    <div class="prose prose-invert max-w-none">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .prose {
+    --tw-prose-body: #f0f0f0;
+    --tw-prose-headings: #f0f0f0;
+    --tw-prose-lead: #888888;
+    --tw-prose-links: #3b82f6;
+    --tw-prose-bold: #f0f0f0;
+    --tw-prose-counters: #888888;
+    --tw-prose-bullets: #2a2a2a;
+    --tw-prose-hr: #2a2a2a;
+    --tw-prose-quotes: #888888;
+    --tw-prose-quote-borders: #2a2a2a;
+    --tw-prose-captions: #888888;
+    --tw-prose-code: #f0f0f0;
+    --tw-prose-pre-code: #f0f0f0;
+    --tw-prose-pre-bg: #161616;
+    --tw-prose-th-borders: #2a2a2a;
+    --tw-prose-td-borders: #2a2a2a;
+  }
+
+  .prose code {
+    @apply bg-bg-surface px-2 py-1 rounded text-sm font-mono;
+  }
+
+  .prose pre {
+    @apply bg-bg-surface border border-bg-border rounded-lg p-4 overflow-x-auto;
+  }
+</style>

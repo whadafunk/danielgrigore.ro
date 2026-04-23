@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+---
+
+<BaseLayout title="Work" description="Infrastructure projects and case studies">
+  <section class="max-w-4xl mx-auto px-6 py-24">
+    <h1 class="text-4xl font-semibold mb-4 text-text-primary">Case Studies</h1>
+    <p class="text-text-secondary mb-12 max-w-2xl">
+      Real projects that demonstrate pragmatic infrastructure design, vendor-agnostic problem solving, and solutions that teams actually understand and use.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <CaseStudyCard
+        title="Service Desk & Asset Management"
+        description="Transformed scattered support processes into a centralized GLPI system with asset tracking, change management, and knowledge base. 40% faster incident resolution, 60% fewer repeat tickets, 99%+ change success rate."
+        slug="glpi-service-desk"
+      />
+      <CaseStudyCard
+        title="Multi-Tenant DNS Architecture"
+        description="PowerDNS + pdns-admin for 30+ subsidiary companies. Delegated administration with Azure SAML, 70% faster queries, zero manual zone creation, fully integrated with IP management and service desk."
+        slug="powerdns-multitenant"
+      />
+      <CaseStudyCard
+        title="Remote VPN & MFA"
+        description="Fortigate + Forti Authenticator + Azure Entra SAML. Flexible authentication for mixed user base (directory and external users). Self-service portal, MFA, multiple authentication realms."
+        slug="remote-vpn"
+      />
+      <CaseStudyCard
+        title="Knowledge Base"
+        description="dokuWiki implementation with structured content, team documentation sessions, and a culture that supports knowledge capture. The real asset that survives employee turnover."
+        slug="dokuwiki-knowledge-base"
+      />
+      <CaseStudyCard
+        title="Virtualization Infrastructure"
+        description="3-node Proxmox cluster with TrueNAS iSCSI storage. 40% resource efficiency vs VMs, migrated 80% of Linux VMs to LXC containers. Enterprise-grade virtualization on commodity hardware."
+        slug="proxmox-cluster"
+      />
+    </div>
+  </section>
+</BaseLayout>

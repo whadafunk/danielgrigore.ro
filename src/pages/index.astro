@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+---
+
+<BaseLayout title="Home">
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto px-6 py-32 text-center">
+    <h1 class="text-5xl md:text-6xl font-semibold mb-6 text-text-primary">
+      Daniel Grigore
+    </h1>
+    <p class="text-2xl md:text-3xl text-text-secondary mb-12 font-light">
+      Infrastructure Consultant
+    </p>
+    <p class="text-xl text-text-secondary mb-12 max-w-2xl mx-auto leading-relaxed">
+      I don't just know how to do it.<br/>
+      <span class="text-text-primary font-medium">I know how it works.</span>
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/#work" class="px-8 py-3 bg-accent text-bg-primary font-semibold rounded hover:opacity-90 transition-opacity">
+        See my work
+      </a>
+      <a href="/contact" class="px-8 py-3 border border-accent text-accent font-semibold rounded hover:bg-accent/10 transition-colors">
+        Get in touch
+      </a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="max-w-4xl mx-auto px-6 py-16 border-t border-bg-border">
+    <h2 class="text-3xl font-semibold mb-8 text-text-primary">About</h2>
+    <div class="space-y-4 text-text-secondary leading-relaxed max-w-2xl">
+      <p>
+        I'm an infrastructure consultant with 15+ years of experience designing and implementing pragmatic, vendor-agnostic solutions. Most consultants know <em>how to deploy</em> infrastructure. I understand <em>how it works</em> — the actual mechanics of DNS, SMTP, networking, virtualization, service management.
+      </p>
+      <p>
+        This means I can explain the technology clearly, design solutions tailored to your specific environment, and make sure your team understands and can maintain what we build together. I'm not here to lock you into expensive vendors or complex implementations. I'm here to solve your actual problems.
+      </p>
+      <p>
+        I specialize in open-source infrastructure, ITSM discipline that actually works, and helping organizations build their own knowledge base so they're not dependent on consultants. I've worked across Romania, Colombia, and multiple countries in international, multicultural environments.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="max-w-4xl mx-auto px-6 py-16 border-t border-bg-border">
+    <h2 class="text-3xl font-semibold mb-8 text-text-primary">Services</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <ServiceCard
+        title="Infrastructure Consulting"
+        description="Assessment, architecture design, and implementation of pragmatic open-source solutions tailored to your environment. From network redesign to DNS at scale to service desk implementation."
+      />
+      <ServiceCard
+        title="ITSM & Service Desk"
+        description="Design and implement service desk systems (GLPI), asset management, change management, and knowledge bases that your team will actually use — not checkbox exercises."
+      />
+      <ServiceCard
+        title="Managed Services"
+        description="DNS, VPN, monitoring, virtualization — hosted on my infrastructure. Fully documented, designed for sustainability so you can take over whenever you want."
+      />
+    </div>
+  </section>
+
+  <!-- Work / Case Studies -->
+  <section class="max-w-4xl mx-auto px-6 py-16 border-t border-bg-border" id="work">
+    <h2 class="text-3xl font-semibold mb-8 text-text-primary">Work</h2>
+    <div class="space-y-4">
+      <p class="text-text-secondary mb-8">
+        Here are some of my recent projects. Each one demonstrates a different aspect of pragmatic infrastructure design.
+      </p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <CaseStudyCard
+          title="Service Desk & Asset Management"
+          description="Transformed scattered support processes into a centralized GLPI system with asset tracking, change management, and knowledge base. 40% faster incident resolution."
+          slug="glpi-service-desk"
+        />
+        <CaseStudyCard
+          title="Multi-Tenant DNS Architecture"
+          description="PowerDNS + pdns-admin for 30+ subsidiary companies. Delegated administration, 70% faster queries, zero manual work. Integrated with IP management and service desk."
+          slug="powerdns-multitenant"
+        />
+        <CaseStudyCard
+          title="Remote VPN & MFA"
+          description="Fortigate + Forti Authenticator + Azure Entra SAML. Flexible authentication for mixed user base (directory + external users). Self-service portal for non-directory users."
+          slug="remote-vpn"
+        />
+        <CaseStudyCard
+          title="Knowledge Base"
+          description="dokuWiki implementation with structured content, team collaboration, and a culture that actually supports documentation. The real asset that survives employee turnover."
+          slug="dokuwiki-knowledge-base"
+        />
+      </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-bg-border">
+      <a href="/work" class="text-accent font-medium hover:opacity-80 transition-opacity">
+        View all work →
+      </a>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="max-w-4xl mx-auto px-6 py-16 border-t border-bg-border">
+    <h2 class="text-3xl font-semibold mb-8 text-text-primary">What people say</h2>
+    <div class="bg-bg-surface border border-bg-border rounded-lg p-8 text-center text-text-secondary">
+      <p class="mb-4">Building this section as I collect feedback and endorsements.</p>
+      <p class="text-sm">
+        In the meantime, check out my <a href="https://linkedin.com/in/grigoreDaniel/" target="_blank" class="text-accent">LinkedIn profile</a> for recommendations and endorsements.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

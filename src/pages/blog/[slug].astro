@@ -1,0 +1,60 @@
+---
+import fs from 'fs';
+import path from 'path';
+import PostLayout from '../../layouts/PostLayout.astro';
+
+export async function getStaticPaths() {
+  const blogDir = path.join(process.cwd(), 'src/content/blog');
+
+  // Return empty if blog dir doesn't exist yet
+  if (!fs.existsSync(blogDir)) {
+    return [];
+  }
+
+  const files = fs.readdirSync(blogDir).filter((f) => f.endsWith('.md'));
+
+  return files.map((file) => ({
+    params: { slug: file.replace('.md', '') },
+  }));
+}
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.params as Props;
+
+if (!slug) {
+  return Astro.redirect('/blog');
+}
+
+const filePath = path.join(process.cwd(), `src/content/blog/${slug}.md`);
+
+if (!fs.existsSync(filePath)) {
+  return Astro.redirect('/blog');
+}
+
+const content = fs.readFileSync(filePath, 'utf-8');
+
+const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+let frontmatter = {};
+let markdown = content;
+
+if (frontmatterMatch) {
+  const fm = frontmatterMatch[1];
+  frontmatter = Object.fromEntries(
+    fm.split('\n').map((line) => {
+      const [key, ...valueParts] = line.split(':');
+      const value = valueParts.join(':').trim().replace(/^"(.*)"$/, '$1');
+      return [key.trim(), value];
+    })
+  );
+  markdown = content.replace(/^---\n[\s\S]*?\n---\n/, '');
+}
+
+const fm = frontmatter as any;
+---
+
+<PostLayout title={fm.title} description={fm.description} pubDate={fm.pubDate ? new Date(fm.pubDate) : undefined}>
+  <Fragment set:html={markdown} />
+</PostLayout>

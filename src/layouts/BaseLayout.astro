@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Infrastructure Consultant. I know how it works.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title} | Daniel Grigore</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <nav class="sticky top-0 bg-bg-primary/95 backdrop-blur border-b border-bg-border">
+      <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="font-semibold text-text-primary hover:text-accent transition-colors">
+          Daniel Grigore
+        </a>
+        <div class="flex gap-6 text-sm">
+          <a href="/#work" class="text-text-secondary hover:text-text-primary transition-colors">Work</a>
+          <a href="/blog" class="text-text-secondary hover:text-text-primary transition-colors">Blog</a>
+          <a href="/contact" class="text-text-secondary hover:text-text-primary transition-colors">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="min-h-screen">
+      <slot />
+    </main>
+
+    <footer class="bg-bg-surface border-t border-bg-border mt-16">
+      <div class="max-w-4xl mx-auto px-6 py-8 text-center text-text-secondary text-sm">
+        <p>© 2024 Daniel Grigore. Based in Bucharest, Romania. Remote.</p>
+      </div>
+    </footer>
+  </body>
+</html>
